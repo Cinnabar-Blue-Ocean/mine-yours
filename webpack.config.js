@@ -12,6 +12,7 @@ module.exports={
     },
 
     target: "web",
+    devtool: "inline-source-map",
     devServer: {
         port: "9500",
         static: DIST_DIR,
