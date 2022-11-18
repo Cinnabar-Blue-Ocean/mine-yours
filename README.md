@@ -1,2 +1,3 @@
-# mine-yours
+# Mine Yours
+
 A barter marketplace. Connecting the community in order to make a better world
