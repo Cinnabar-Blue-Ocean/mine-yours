@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+#trade-container {
+  margin: auto;
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 1000px;
+}
+.drawer-header {
+  top: 65px !important;
+  width: 65px !important;
+  left: 0px !important;
+}
+.css-jzk4qw-MuiPaper-root-MuiAppBar-root {
+  display: none !important;
+}
+
+.css-1gjgmky-MuiToggleButtonGroup-root {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.css-wjh20t-MuiPagination-ul {
+  justify-content: center;
+}
+
+.css-1pqm26d-MuiAvatar-img:hover {
+  cursor: pointer;
+}
+
