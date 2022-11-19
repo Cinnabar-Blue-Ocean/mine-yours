@@ -1,10 +1,10 @@
 import React from 'react';
 import LandingPage from './Landing Page/LandingPage'
-
+import Navbar from './navbar/Navbar.jsx';
 const App = () => {
   return (
     <div>
-      <div>App</div>
+      <Navbar />
       <LandingPage />
     </div>
   );
