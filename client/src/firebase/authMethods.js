@@ -10,7 +10,7 @@ import { auth, db } from './index.js';
 // Import authMethods.js accessing needed auth function
 
 // Takes in new user details and return ref to the user in firestore
-export const signUp = async (email, password, firstName, lastName, zipCode) => {
+export const signUpWithEmail = async (email, password, firstName, lastName, zipCode) => {
   try {
     const user = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
     const uid = user.uid;
@@ -36,8 +36,8 @@ export const signInWithEmail = async (email, password) => {
   }
 }
 
-// calling signout will logout user and set user object to null
-export const signOut = async () => {
+// calling signOut will logout user and set user object to null
+export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch(err) {
@@ -45,5 +45,3 @@ export const signOut = async () => {
   }
 }
 
-signUp('test1234@gmail.com', 'password123', 'Bobby', 'Joe', 80015)
-//
