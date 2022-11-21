@@ -11,7 +11,7 @@ A barter marketplace. Connecting the community in order to make a better world
 2. [Technical Overview](#technical-overview)
 3. [Usage](#usage)
 4. [Requirements](#requirements)
-5. [Development](#development)
+5. [Firestore Methods](#firestoreMethods)
 6. [Production](#production)
 7. [Testing](#testing)
 
@@ -20,7 +20,7 @@ A barter marketplace. Connecting the community in order to make a better world
 
 
 ## Technical Overview
-> This app uses version 9 compat and as such may need updates as Firebase fixes this known issue.
+
 
 ## Usage
 In order to run the project locally please read [Requirements](#requirements) section for instructions setting up a local .env and for installing dependencies. Find further instructions for setting up the project for development or production in the [Development](#development) and [Production](#production) sections.
@@ -36,9 +36,20 @@ Node.js - version 16.0+
 From within the root directory:
 > 1. Run ```npm install``` to install all required dependencies
 
-## Development
+## Firestore Methods
+Create New Listing
+> ```postListing(name, description, photos, type, zip_code)```
+>
+> Returns document reference
 
-Setting up the development environment:
+Update Listing
+> ```updateListing(listing_id, data)```
+> data: data object with properties to change on the listing
+> Returns document reference
+
+Delete Listing
+> ```deleteListing(listing_id)```
+
 
 ## Production
 

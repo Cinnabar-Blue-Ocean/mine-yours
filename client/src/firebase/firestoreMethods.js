@@ -1,4 +1,4 @@
-import { collection, addDoc, setDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from './index.js';
 
 
@@ -18,8 +18,6 @@ import { auth, db } from './index.js';
 
 //post a trade
 
-//post a message
-
 //post a listing
 export const postListing = async (name, description, photos = [], type, zip_code) => {
   return await addDoc(collection(db, 'listings'), {
@@ -38,9 +36,16 @@ export const postListing = async (name, description, photos = [], type, zip_code
 //update a review
 
 //update a listing
+export const updateListing = async (listing_id, data) => {
+  const docRef = await doc(db, 'listings', listing_id)
+
+  return await updateDoc(docRef, data)
+}
 
 //delete a listing
-
+export const deleteListing = async (listing_id) => {
+  return await deleteDoc(doc(db, 'listings', listing_id))
+}
 //delete a message
 
 //delete a review
