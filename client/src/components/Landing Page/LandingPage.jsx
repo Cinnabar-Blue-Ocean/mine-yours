@@ -80,7 +80,7 @@ const LandingPage = () => {
     zip_code: 61080
   }])
   useEffect(() => {
-    getListings()
+    //getListings()
 
   }, [])
   return (
