@@ -37,11 +37,14 @@ From within the root directory:
 > 1. Run ```npm install``` to install all required dependencies
 
 ## Firestore Methods
-
-
 Create New Listing
 > ```postListing(name, description, photos, type, zip_code)```
 >
+> Returns document reference
+
+Update Listing
+> ```updateListing(listing_id, data)```
+> data: data object with properties to change on the listing
 > Returns document reference
 
 ## Production
