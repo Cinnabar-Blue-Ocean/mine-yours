@@ -29,7 +29,7 @@ export const signUpWithEmail = async (email, password, firstName, lastName, zipC
 // Will sign in and return user
 export const signInWithEmail = async (email, password) => {
   try {
-    const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    const user = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (err) {
     console.log('Could not sign in: ', err.message);
