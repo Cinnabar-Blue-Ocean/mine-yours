@@ -7,7 +7,9 @@ import Home from '../pages/Home.jsx'
 import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
+
 const App = () => {
+
   return (
     <Box>
       <Routes>

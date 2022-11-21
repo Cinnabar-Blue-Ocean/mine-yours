@@ -1,8 +1,8 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
-firebase.initializeApp({
+const firebaseApp = initializeApp({
   apiKey: "AIzaSyDMQiT_igpgOF7V98WiDjiCbsk0W4ciWA0",
   authDomain: "mine-yours.firebaseapp.com",
   projectId: "mine-yours",
@@ -12,10 +12,6 @@ firebase.initializeApp({
   measurementId: "G-PH0YQ7F1QJ"
 });
 
-
-let db = firebase.firestore()
-let auth = firebase.auth()
-
-export default {
-  firebase, db, auth
-}
+// To use import firebase/index.js const { service } = 'firebase/index.js'
+export const auth = getAuth(firebaseApp);
+export const db = getFirestore(firebaseApp);
