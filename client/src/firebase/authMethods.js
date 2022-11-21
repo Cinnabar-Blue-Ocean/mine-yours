@@ -37,7 +37,7 @@ export const signInWithEmail = async (email, password) => {
 }
 
 // calling signOut will logout user and set user object to null
-export const signOut = async () => {
+export const signOutUser = async () => {
   try {
     await signOut(auth);
   } catch(err) {
