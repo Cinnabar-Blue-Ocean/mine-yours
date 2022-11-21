@@ -11,7 +11,7 @@ A barter marketplace. Connecting the community in order to make a better world
 2. [Technical Overview](#technical-overview)
 3. [Usage](#usage)
 4. [Requirements](#requirements)
-5. [Development](#development)
+5. [Firestore Methods](#firestoreMethods)
 6. [Production](#production)
 7. [Testing](#testing)
 
@@ -36,9 +36,13 @@ Node.js - version 16.0+
 From within the root directory:
 > 1. Run ```npm install``` to install all required dependencies
 
-## Development
+## Firestore Methods
 
-Setting up the development environment:
+
+Create New Listing
+> ```postListing(name, description, photos, type, zip_code)```
+>
+> Returns document reference
 
 ## Production
 
