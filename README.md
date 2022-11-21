@@ -47,6 +47,10 @@ Update Listing
 > data: data object with properties to change on the listing
 > Returns document reference
 
+Delete Listing
+> ```deleteListing(listing_id)```
+
+
 ## Production
 
 Creating production build:
