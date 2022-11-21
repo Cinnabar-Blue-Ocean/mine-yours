@@ -36,7 +36,13 @@ module.exports={
               test: /\.css$/i,
               include: SRC_DIR,
               use: ['style-loader', 'css-loader', 'postcss-loader'],
-            }
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: {
+                  loader: 'url-loader'
+                },
+              },
         ]
     }
 }
