@@ -44,3 +44,6 @@ export const signOut = async () => {
     console.log('Error in authMethods.js signOut', err.code, err.message);
   }
 }
+
+signUp('test1234@gmail.com', 'password123', 'Bobby', 'Joe', 80015)
+//
