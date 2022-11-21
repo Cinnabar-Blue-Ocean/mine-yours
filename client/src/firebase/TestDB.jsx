@@ -2,11 +2,17 @@ import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { collection, addDoc } from "firebase/firestore";
+import { db } from './index.js'
 
 const TestDB = () => {
   const [test, setTest] = useState('');
 
-  const clickHandler = () => {
+  const clickHandler = async () => {
+    const docRef = await addDoc(collection(db, 'test'), {
+      test
+    })
+    console.log("Document written with ID: ", docRef.id);
 
   }
 
