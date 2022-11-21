@@ -12,5 +12,6 @@ const firebaseApp = initializeApp({
   measurementId: "G-PH0YQ7F1QJ"
 });
 
+// To use import firebase/index.js const { service } = 'firebase/index.js'
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp);
