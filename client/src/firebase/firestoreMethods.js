@@ -1,6 +1,7 @@
 import { collection, addDoc, setDoc } from "firebase/firestore";
 import { auth, db } from './index.js';
 
+
 //Define queries
 
 //get a specific listing
@@ -20,6 +21,17 @@ import { auth, db } from './index.js';
 //post a message
 
 //post a listing
+export const postListing = async (name, description, photos = [], type, zip_code) => {
+  return await addDoc(collection(db, 'listings'), {
+    name,
+    description,
+    photos,
+    status: true,
+    type,
+    user_id: auth.currentUser.uid,
+    zip_code
+  })
+}
 
 //update user info
 
