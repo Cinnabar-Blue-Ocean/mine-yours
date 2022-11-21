@@ -1,4 +1,4 @@
-import { collection, addDoc, setDoc, doc,updateDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from './index.js';
 
 
@@ -43,7 +43,9 @@ export const updateListing = async (listing_id, data) => {
 }
 
 //delete a listing
-
+export const deleteListing = async (listing_id) => {
+  return await deleteDoc(doc(db, 'listings', listing_id))
+}
 //delete a message
 
 //delete a review
