@@ -12,7 +12,7 @@ import { auth, db } from './index.js';
 // Takes in new user details and return ref to the user in firestore
 export const signUpWithEmail = async (email, password, firstName, lastName, zipCode) => {
   try {
-    const user = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
+    const user = await createUserWithEmailAndPassword(auth, email, password);
     const uid = user.uid;
     const userRef = await setDoc(doc(db, 'users', uid), {
       email,
