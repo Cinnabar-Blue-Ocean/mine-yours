@@ -20,7 +20,7 @@ A barter marketplace. Connecting the community in order to make a better world
 
 
 ## Technical Overview
-> This app uses version 9 compat and as such may need updates as Firebase fixes this known issue.
+
 
 ## Usage
 In order to run the project locally please read [Requirements](#requirements) section for instructions setting up a local .env and for installing dependencies. Find further instructions for setting up the project for development or production in the [Development](#development) and [Production](#production) sections.
