@@ -50,6 +50,10 @@ Update Listing
 Delete Listing
 > ```deleteListing(listing_id)```
 
+Update User Information
+> ```updateUser(user_id, data)```
+> data: data object with properties to change on the user
+> Returns document reference
 
 ## Production
 

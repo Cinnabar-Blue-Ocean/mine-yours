@@ -32,13 +32,15 @@ export const postListing = async (name, description, photos = [], type, zip_code
 }
 
 //update user info
-
+export const updateUser = async (user_id, data) => {
+  const docRef = await doc(db, 'users', user_id)
+  return await updateDoc(docRef, data)
+}
 //update a review
 
 //update a listing
 export const updateListing = async (listing_id, data) => {
   const docRef = await doc(db, 'listings', listing_id)
-
   return await updateDoc(docRef, data)
 }
 
@@ -46,7 +48,6 @@ export const updateListing = async (listing_id, data) => {
 export const deleteListing = async (listing_id) => {
   return await deleteDoc(doc(db, 'listings', listing_id))
 }
-//delete a message
 
 //delete a review
 
