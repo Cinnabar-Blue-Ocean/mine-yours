@@ -1,47 +1,83 @@
+import React,{ createContext, useContext, useState, useEffect } from "react";
+import { auth, googleProvider,db } from "./index.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
-} from 'firebase/auth';
-import { collection, addDoc, setDoc } from "firebase/firestore";
-import { auth, db } from './index.js';
+  signOut,
+  signInWithPopup
+} from 'firebase/auth'
 
-// Import authMethods.js accessing needed auth function
+import { doc,collection, setDoc } from "firebase/firestore";
 
-// Takes in new user details and return ref to the user in firestore
-export const signUpWithEmail = async (email, password, firstName, lastName, zipCode) => {
-  try {
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    const uid = user.uid;
-    const userRef = await setDoc(doc(db, 'users', uid), {
-      email,
-      first_name: firstName,
-      last_name: lastName,
-      zip_code: zipCode
-    })
-    return userRef;
-  } catch (err) {
-    console.log('Error in authMethods.js signup', err.code, err.message);
-  }
+const AuthContext = createContext();
+
+export function useAuth() {
+  return useContext(AuthContext);
 }
 
-// Will sign in and return user
-export const signInWithEmail = async (email, password) => {
-  try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-    return user;
-  } catch (err) {
-    console.log('Could not sign in: ', err.message);
-  }
-}
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-// calling signOut will logout user and set user object to null
-export const signOutUser = async () => {
-  try {
-    await signOut(auth);
-  } catch(err) {
-    console.log('Error in authMethods.js signOut', err.code, err.message);
-  }
-}
+  useEffect(() => {
 
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setUser(user)
+      setLoading(false);
+  })
+
+    return unsubscribe;
+  }, []);
+
+  function signIn(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function signInWithGoogle() {
+    return signInWithPopup(auth,googleProvider);
+  }
+
+  function signUp(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  function signOutUser() {
+    return signOut(auth);
+  }
+
+  function resetPassword(email) {
+    return sendPasswordResetEmail(auth,email);
+  }
+
+  function addData(data) {
+    return setDoc(doc(db, "users", user.uid), data);
+  }
+
+
+  // function updateEmail(email) {
+  //   return user.updateEmail(email);
+  // }
+
+  // function updatePassword(password) {
+  //   return user.updatePassword(password);
+  // }
+
+  const value = {
+    user,
+    signIn,
+    signInWithGoogle,
+    signUp,
+    signOutUser,
+    resetPassword,
+    addData
+    // updateEmail,
+    // updatePassword,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+}

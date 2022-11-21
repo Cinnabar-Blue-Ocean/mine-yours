@@ -7,6 +7,7 @@ import Home from '../pages/Home.jsx'
 import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
+import CollectUserInfo from '../pages/CollectUserInfo.jsx'
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/userInfo" element={<CollectUserInfo />} />
       </Routes>
     </Box>
   );
