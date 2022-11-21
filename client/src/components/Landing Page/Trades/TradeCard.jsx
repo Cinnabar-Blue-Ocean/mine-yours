@@ -19,15 +19,15 @@ export default function MediaCard(props) {
         <CardMedia
           component="img"
           height="140"
-          image = {item.item_photos[0]}
+          image = {item.photos[0]}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {item.item_name}
+            {item.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.item_description}
+            {item.description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {`${item.type[0].toUpperCase() + item.type.substr(1)} trade located at ${item.zip_code}`}
@@ -39,11 +39,11 @@ export default function MediaCard(props) {
         <CardActions>
           <Button size="small" onClick={(e) => {
             // Get info about item and user to send to db to query
-            console.log(item.item_name, item.user_id)
+            console.log(item.name, item.user_id)
           }}>Message</Button>
           <Button size="small" onClick={(e) => {
             // Get info about item to send to db to query
-            console.log(item.item_name)
+            console.log(item.name)
           }}>Learn More</Button>
           <Container className="avatar" sx={{width: '0 !important'}} onClick={(e) => {
             //info about user
