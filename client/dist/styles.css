@@ -66,3 +66,8 @@
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: 1px solid green !important;
 }
+
+.images {
+  height: 100px;
+  width: 100px;
+}
