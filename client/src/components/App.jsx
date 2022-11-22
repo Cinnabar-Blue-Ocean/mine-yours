@@ -8,24 +8,60 @@ import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
 import CollectUserInfo from '../pages/CollectUserInfo.jsx'
-import Loading from '../pages/Loading.jsx'
-import { getUser, getListingByName } from '../firebase/retrieveData';
+import {
+  getUser,
+  getListing,
+  getMessages,
+  getReviews,
+  getTrades } from '../firebase/retrieveData';
+
 
 const App = () => {
 
   const [user, setUser] = useState([]);
   const [listing, setListing] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [trades, setTrades] = useState([]);
 
   // useEffect(() => {
-  //   getUser('abc')
+  //   getUser({username: "test"})
   //     .then(data => {
   //       setUser(data);
   //     })
   // }, []);
 
   // useEffect(() => {
-  //   console.log('user', user);
+  //   getListing({name: "Lawn Mower"})
+  //     .then(data => {
+  //       setListing(data);
+  //     })
   // }, []);
+
+  // useEffect(() => {
+  //   getMessages({from_user: "test_from_user"})
+  //     .then(data => {
+  //       setMessages(data);
+  //     })
+  // }, [])
+
+  useEffect(() => {
+    getReviews({})
+      .then(data => {
+        setReviews(data);
+      })
+  }, [])
+
+  useEffect(() => {
+    getTrades({})
+      .then(data => {
+        setTrades(data);
+      })
+  }, [])
+
+  useEffect(() => {
+    console.log('user', user, 'listing', listing, 'messages', messages, 'reviews', reviews, 'trades', trades);
+  }, [user, listing, messages]);
 
 
   return (
