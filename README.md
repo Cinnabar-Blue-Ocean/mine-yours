@@ -42,6 +42,31 @@ Create New Listing
 >
 > Returns document reference
 
+Get listings by a specific filter
+>```getListings(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+Get users by a specific filter
+>```getUser(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+Get messages using a specific filter
+>```getMessages(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+Get reviews using a specific filter
+>```getReviews(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+Get trades using a specific filter
+>```getTrades(object)```
+>
+> Returns the document reference that matches the properties in the object
+
 Update Listing
 > ```updateListing(listing_id, data)```
 > data: data object with properties to change on the listing
