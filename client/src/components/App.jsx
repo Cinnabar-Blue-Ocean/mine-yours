@@ -14,6 +14,7 @@ import {
   getMessages,
   getReviews,
   getTrades } from '../firebase/retrieveData';
+import Loader from '../pages/Loading.jsx'
 
 
 const App = () => {
@@ -72,7 +73,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/userInfo" element={<CollectUserInfo />} />
-        <Route path="/loading" element={<Loading />} />
+        <Route path="/loading" element={<Loader />} />
       </Routes>
     </Box>
   );
