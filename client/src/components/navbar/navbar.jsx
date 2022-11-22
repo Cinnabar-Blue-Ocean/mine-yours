@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import logo from '../../media/logo-no-background.png';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,8 +14,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import logo from '../../media/logo-no-background.png';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import SearchBar from './searchbar.jsx';
 
 const pages = ['Home', 'Profile', 'Listings', 'New Listing'];
 const settings = ['Account', 'Logout'];
@@ -78,9 +79,10 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              <SearchBar />
               {pages.map((page, idx) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to={urlMap[idx]} key={page} style={{textDecoration: 'none'}}>
+                  <Link to={urlMap[idx]} key={page} style={{ textDecoration: 'none' }}>
                     <Typography textAlign="center">{page}</Typography>
                   </Link>
                 </MenuItem>
@@ -94,7 +96,7 @@ function Navbar() {
           />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, idx) => (
-              <Link to={urlMap[idx]} key={page} style={{textDecoration: 'none'}}>
+              <Link to={urlMap[idx]} key={page} style={{ textDecoration: 'none' }}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -104,6 +106,10 @@ function Navbar() {
                 </Button>
               </Link>
             ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <SearchBar />
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
