@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import { useAuth } from "../firebase/authMethods.js";
 import { Box,Button,TextField } from '@mui/material';
 
 function SignIn() {
-  const {signIn, signInWithGoogle, resetPassword,signOutUser,user} = useAuth();
+  const {signIn, signInWithGoogle, resetPassword,signOutUser,user,findData} = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -13,6 +13,10 @@ function SignIn() {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+      console.log(user?.uid)
+  }, [googleLoading]);
 
 
   const handleSignIn = async (e) => {
@@ -39,8 +43,13 @@ function SignIn() {
   const handleSignOut = async (e)=>{
     e?e.preventDefault():null;
     try {
-      setLoading(true);
       await signOutUser()
+      setLoading(true);
+      console.log(user)
+      navigate(`/loading`, { replace: true })
+      await setTimeout(fun=>{
+        navigate(`/`, { replace: true })
+      }, 600)
     } catch (error) {
       setError(error.message);
     }
@@ -48,17 +57,37 @@ function SignIn() {
   }
 
   const handleGoogleSignIn = async () => {
-    handleSignOut()
+    await signOutUser()
     try {
+      await signInWithGoogle().then(result=>{
+        console.log(`result`,result)
+        findInfo(result)
+      });
       setGoogleLoading(true);
-      await signInWithGoogle();
-      navigate("/userInfo", { replace: true })
     } catch (error) {
       setError(error.message);
     }
 
     setGoogleLoading(false);
   };
+
+  const findInfo= async (user)=>{
+    const result = await findData(user.user.uid)
+    console.log('result',result)
+    if (result.exists()) {
+      navigate(`/loading`, { replace: true })
+      await setTimeout(fun=>{
+        navigate(`/profile/${user.user.uid}`, { replace: true })
+      }, 600)
+      // navigate(`/profile/${user.user.uid}`, { replace: true })
+    } else {
+      navigate(`/loading`, { replace: true })
+      await setTimeout(fun=>{
+        navigate("/userInfo", { replace: true })
+      }, 600)
+      // navigate("/userInfo", { replace: true })
+    }
+  }
 
   // const handlePassword = async () => {
   //   setMessage(null);
@@ -100,6 +129,7 @@ function SignIn() {
         label="Email"
         value={loginEmail}
         onChange = {e => setLoginEmail(e.target.value)}
+        required
       />
       <TextField
         id="outlined-password-input"
@@ -107,6 +137,7 @@ function SignIn() {
         type="password"
         value={loginPassword}
         onChange = {e => setLoginPassword(e.target.value)}
+        required
       />
       <Button
         sx={{
@@ -117,6 +148,7 @@ function SignIn() {
         onClick={handleSignIn}
           variant="outlined">Log In</Button>
       Currently Signed In User: {user?.email}
+      Currently UserId: {user?.uid}
       <Button
           sx={{
             m: 1,
@@ -141,11 +173,6 @@ function SignIn() {
         onClick={()=>navigate("/signUp", { replace: true })}
           variant="outlined">SignUp</Button>
     </Box>
-
-
-      <hr />
-
-    {/* { user ? <TestDB /> : null } */}
     </>
   );
 }
