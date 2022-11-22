@@ -133,10 +133,6 @@ export const getListingById = async (listing_id) => {
     console.log('Error getting trade: ', err.code, err.message)
   }
 }
-//get a specific user
-
-
-//get reviews for a user
 
 //get a trade
 export const getTradeById = async (trade_id) => {
