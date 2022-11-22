@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import Pagination from '@mui/material/Pagination';
 import { getFirestore } from 'firebase/firestore';
 import { getListings } from '../../firebase/getListings.js'
+import { findDistance } from '../../zipCodes/locationFinder.js'
 
 const LandingPage = () => {
   const [listings, setListings] = useState([{
@@ -84,6 +85,7 @@ const LandingPage = () => {
     // .then((data) => {
     //   setListings(data);
     // })
+    // findDistance(61080, 61073)
 
   }, [])
   return listings.length > 0 ? (
