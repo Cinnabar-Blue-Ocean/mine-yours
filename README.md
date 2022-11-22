@@ -37,33 +37,30 @@ From within the root directory:
 > 1. Run ```npm install``` to install all required dependencies
 
 ## Firestore Methods
-Create New Listing
-> ```postListing(name, description, photos, type, zip_code)```
->
-> Returns document reference
 
-Get listings by a specific filter
->```getListings(object)```
->
-> Returns the document reference that matches the properties in the object
-
+### User Functions
 Get users by a specific filter
 >```getUser(object)```
 >
 > Returns the document reference that matches the properties in the object
 
-Get messages using a specific filter
->```getMessages(object)```
->
-> Returns the document reference that matches the properties in the object
+Update User Information
+> ```updateUser(user_id, data)```
+> data: data object with properties to change on the user
+> Returns document reference
 
-Get reviews using a specific filter
->```getReviews(object)```
+### Listing Functions
+Create New Listing
+> ```postListing(name, description, photos, type, zip_code)```
 >
-> Returns the document reference that matches the properties in the object
+> Returns document reference
 
-Get trades using a specific filter
->```getTrades(object)```
+Get Listing by ID
+> ```getListingById(listing_id)```
+> Returns listing data
+
+Get listings by a specific filter
+>```getListings(object)```
 >
 > Returns the document reference that matches the properties in the object
 
@@ -75,14 +72,26 @@ Update Listing
 Delete Listing
 > ```deleteListing(listing_id)```
 
-Update User Information
-> ```updateUser(user_id, data)```
-> data: data object with properties to change on the user
-> Returns document reference
+### Message Functions
 
-Get Listing by ID
-> ```getListingById(listing_id)```
-> Returns listing data
+Get messages using a specific filter
+>```getMessages(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+### Review Functions
+
+Get reviews using a specific filter
+>```getReviews(object)```
+>
+> Returns the document reference that matches the properties in the object
+
+### Trade Functions
+
+Get trades using a specific filter
+>```getTrades(object)```
+>
+> Returns the document reference that matches the properties in the object
 
 Post a trade
 > ```postTrade((listing_id, receiver_id, expiration_date [, start_date])```
