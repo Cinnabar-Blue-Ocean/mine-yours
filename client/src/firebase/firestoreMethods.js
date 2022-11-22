@@ -5,7 +5,15 @@ import { auth, db } from './index.js';
 //Define queries
 
 //get a specific listing
-
+const getListingById = async (listing_id) => {
+  let docSnap = await getDoc(doc(db, 'listings', listing_id))
+  if (docSnap.exists()) {
+    return docSnap.data()
+  } else {
+    console.log('Could not find listing with id: ', listing_id)
+    return null;
+  }
+}
 //get a specific user
 
 //get messages from user
@@ -13,10 +21,16 @@ import { auth, db } from './index.js';
 //get reviews for a user
 
 //get a trade
+const getTradeById = (trade_id) => {
+
+}
 
 //post a review
 
 //post a trade
+const postTrade = (listing_id, ) => {
+
+}
 
 //post a listing
 export const postListing = async (name, description, photos = [], type, zip_code) => {
