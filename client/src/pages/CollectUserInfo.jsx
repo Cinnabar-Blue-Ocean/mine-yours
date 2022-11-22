@@ -19,9 +19,9 @@ function CollectUserInfo() {
       last_name:lastName,
       zip_code:zipCode
     }
+    console.log('userRef',userRef)
     await addData(userRef)
-    console.log(user)
-    // navigate(`/profile/${user.uid}`, { replace: true })
+    navigate(`/profile/${user.uid}`, { replace: true })
   }
 
 

@@ -24,9 +24,11 @@ function SignUp() {
 
     try {
       setLoading(true);
-      await signUp(email, password);
+      await signUp(email, password).then(result=>{
+        console.log(`sigup`,result)
+      });
+      navigate("/userInfo", { replace: true })
 
-      history.push("/");
     } catch (error) {
       setError(error.message);
     }
@@ -75,7 +77,7 @@ function SignUp() {
           m: 1,
           width: '25ch'
         }}
-        onClick={()=>navigate("/userInfo", { replace: true })}
+        onClick={handleSingUp}
           variant="outlined">Submit</Button>
     </Box>
   );

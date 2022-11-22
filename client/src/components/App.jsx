@@ -8,6 +8,7 @@ import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
 import CollectUserInfo from '../pages/CollectUserInfo.jsx'
+import Loading from '../pages/Loading.jsx'
 import { getUser, getListingByName } from '../firebase/retrieveData';
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/userInfo" element={<CollectUserInfo />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </Box>
   );
