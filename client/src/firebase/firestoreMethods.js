@@ -1,11 +1,19 @@
-import { collection, addDoc, setDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  setDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc
+} from "firebase/firestore";
 import { auth, db } from './index.js';
 
 
 //Define queries
 
 //get a specific listing
-const getListingById = async (listing_id) => {
+export const getListingById = async (listing_id) => {
   let docSnap = await getDoc(doc(db, 'listings', listing_id))
   if (docSnap.exists()) {
     return docSnap.data()
