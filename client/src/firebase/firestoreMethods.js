@@ -36,8 +36,17 @@ const getTradeById = (trade_id) => {
 //post a review
 
 //post a trade
-const postTrade = (listing_id, ) => {
+const postTrade = async (listing_id, receiver_id, start_date, expiration_date) => {
+  try {
+    const listing = await getListingById(listing_id)
+    console.log(listing)
+    let docRef = await addDoc(collection(db, 'trades'), {
+      listing_id,
+      owner_id
+    })
+  } catch (err) {
 
+  }
 }
 
 //post a listing
