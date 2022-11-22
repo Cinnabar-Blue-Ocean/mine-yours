@@ -36,3 +36,38 @@
   cursor: pointer;
 }
 
+.css-jzk4qw-MuiPaper-root-MuiAppBar-root {
+  display: none !important;
+}
+
+.css-1gjgmky-MuiToggleButtonGroup-root {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.css-wjh20t-MuiPagination-ul {
+  justify-content: center;
+}
+
+.css-1pqm26d-MuiAvatar-img:hover {
+  cursor: pointer;
+}
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: green !important;
+}
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: green !important;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: 1px solid green !important;
+}
+
+.images {
+  height: 100px;
+  width: 100px;
+}

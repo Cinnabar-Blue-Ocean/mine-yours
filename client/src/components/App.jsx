@@ -15,6 +15,7 @@ import {
   getReviews,
   getTrades } from '../firebase/retrieveData';
 
+
 const App = () => {
 
   const [user, setUser] = useState([]);
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/userInfo" element={<CollectUserInfo />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </Box>
   );
