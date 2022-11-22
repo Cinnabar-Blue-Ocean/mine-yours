@@ -128,8 +128,18 @@ export const getListingById = async (listing_id) => {
 //get reviews for a user
 
 //get a trade
-const getTradeById = (trade_id) => {
-
+export const getTradeById = async (trade_id) => {
+  try {
+    let docSnap = await getDoc(doc(db, 'trades', trade_id))
+    if (docSnap.exists()) {
+      return docSnap.data()
+    } else {
+      console.log('Could not find trade with id: ', trade_id)
+      return null;
+    }
+  } catch (err) {
+    console.log('Error getting trade: ', err.code, err.message)
+  }
 }
 
 //post a review
