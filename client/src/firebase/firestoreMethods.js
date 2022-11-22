@@ -24,7 +24,6 @@ export const getListingById = async (listing_id) => {
 }
 //get a specific user
 
-//get messages from user
 
 //get reviews for a user
 
