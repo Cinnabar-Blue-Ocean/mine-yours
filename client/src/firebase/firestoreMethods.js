@@ -121,18 +121,58 @@ export const getListingById = async (listing_id) => {
     console.log('Could not find listing with id: ', listing_id)
     return null;
   }
+  try {
+    let docSnap = await getDoc(doc(db, 'trades', trade_id))
+    if (docSnap.exists()) {
+      return docSnap.data()
+    } else {
+      console.log('Could not find trade with id: ', trade_id)
+      return null;
+    }
+  } catch (err) {
+    console.log('Error getting trade: ', err.message)
+  }
 }
-//get a specific user
-
-
-//get reviews for a user
 
 //get a trade
-const getTradeById = (trade_id) => {
-
+export const getTradeById = async (trade_id) => {
+  try {
+    let docSnap = await getDoc(doc(db, 'trades', trade_id))
+    if (docSnap.exists()) {
+      return docSnap.data()
+    } else {
+      console.log('Could not find trade with id: ', trade_id)
+      return null;
+    }
+  } catch (err) {
+    console.log('Error getting trade: ', err.message)
+  }
 }
 
 //post a review
+export const postReview = async (trade_id, poster_id, rating, description) => {
+  try {
+    const trade = await getTradeById(trade_id)
+    console.log('trade',trade)
+    if (!trade) {
+      throw new Error('Could not find trade with id, ', trade_id)
+    } else if (poster_id !== trade.owner_id && poster_id !== trade.receiver_id) {
+      throw new Error('Reviews must be from a party of the trade')
+    } else {
+      const data = {
+        trade_id,
+        poster_id,
+        rating,
+        description
+      }
+      let docRef = await addDoc(collection(db, 'reviews'), data)
+      return docRef.id
+    }
+
+  } catch (err) {
+    console.log('Error creating review: ', err.message)
+  }
+}
 
 // Post a trade
 export const postTrade = async (listing_id, receiver_id, expiration_date, start_date = new Date()) => {
@@ -153,7 +193,7 @@ export const postTrade = async (listing_id, receiver_id, expiration_date, start_
     }
 
   } catch (err) {
-    console.log('Error creating trade: ', err.code, err.message)
+    console.log('Error creating trade: ', err.message)
   }
 }
 

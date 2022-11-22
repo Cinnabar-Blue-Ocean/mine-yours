@@ -86,6 +86,12 @@ Get reviews using a specific filter
 >
 > Returns the document reference that matches the properties in the object
 
+Get reviews using a specific filter
+>```postReview(trade_id, poster_id, rating, description)```
+>
+> Returns the document reference to created review.
+> Note: poster_id must match the owner_id or receiver_id of the trade being reviewed
+
 ### Trade Functions
 
 Get trades using a specific filter
@@ -94,9 +100,13 @@ Get trades using a specific filter
 > Returns the document reference that matches the properties in the object
 
 Post a trade
-> ```postTrade((listing_id, receiver_id, expiration_date [, start_date])```
+> ```postTrade(listing_id, receiver_id, expiration_date [, start_date])```
 > Start date is optional, if not provided current time will be used
 > Returns trade_id
+
+Get trade by id
+> ```getTradeById(trade_id)```
+> Returns trade document
 
 
 ## Production
