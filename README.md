@@ -55,6 +55,11 @@ Update User Information
 > data: data object with properties to change on the user
 > Returns document reference
 
+Get Listing by ID
+> ```getListingById(listing_id)```
+> Returns listing data
+
+
 ## Production
 
 Creating production build:
