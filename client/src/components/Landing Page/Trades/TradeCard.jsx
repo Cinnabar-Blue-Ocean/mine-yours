@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,9 +8,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
+import BasicModal from '../Modal/ListingModal'
 
 export default function MediaCard(props) {
-  console.log(props)
   const { listings } = props
   return (
     <>
@@ -27,7 +28,7 @@ export default function MediaCard(props) {
             {item.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.description}
+            {item.description.split('.')[0] + '...'}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {`${item.type[0].toUpperCase() + item.type.substr(1)} trade located at ${item.zip_code}`}
@@ -41,10 +42,7 @@ export default function MediaCard(props) {
             // Get info about item and user to send to db to query
             console.log(item.name, item.user_id)
           }}>Message</Button>
-          <Button size="small" onClick={(e) => {
-            // Get info about item to send to db to query
-            console.log(item.name)
-          }}>Learn More</Button>
+          <BasicModal images={item.photos} description={item.description}/>
           <Container className="avatar" sx={{width: '0 !important'}} onClick={(e) => {
             //info about user
             console.log(item.user_id)
@@ -58,5 +56,5 @@ export default function MediaCard(props) {
     })}
 
     </>
-  );
+  )
 }
