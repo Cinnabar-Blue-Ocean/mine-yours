@@ -130,7 +130,7 @@ export const getListingById = async (listing_id) => {
       return null;
     }
   } catch (err) {
-    console.log('Error getting trade: ', err.code, err.message)
+    console.log('Error getting trade: ', err.message)
   }
 }
 
@@ -145,7 +145,7 @@ export const getTradeById = async (trade_id) => {
       return null;
     }
   } catch (err) {
-    console.log('Error getting trade: ', err.code, err.message)
+    console.log('Error getting trade: ', err.message)
   }
 }
 
@@ -193,7 +193,7 @@ export const postTrade = async (listing_id, receiver_id, expiration_date, start_
     }
 
   } catch (err) {
-    console.log('Error creating trade: ', err.code, err.message)
+    console.log('Error creating trade: ', err.message)
   }
 }
 
