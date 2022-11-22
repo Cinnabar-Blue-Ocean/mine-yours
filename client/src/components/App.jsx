@@ -8,23 +8,23 @@ import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
 import CollectUserInfo from '../pages/CollectUserInfo.jsx'
-import { getUsers, getListingByName } from '../firebase/retrieveData';
+import { getUser, getListingByName } from '../firebase/retrieveData';
 
 const App = () => {
 
-  const [users, setUsers] = useState([]);
-  const [listings, setListings] = useState([]);
+  const [user, setUser] = useState([]);
+  const [listing, setListing] = useState([]);
 
-  useEffect(() => {
-    getListingByName()
-      .then(data => {
-        setListings(data);
-      })
-  }, []);
+  // useEffect(() => {
+  //   getUser('abc')
+  //     .then(data => {
+  //       setUser(data);
+  //     })
+  // }, []);
 
-  useEffect(() => {
-    console.log('listings', listings);
-  }, [])
+  // useEffect(() => {
+  //   console.log('user', user);
+  // }, []);
 
 
   return (
