@@ -59,6 +59,11 @@ Get Listing by ID
 > ```getListingById(listing_id)```
 > Returns listing data
 
+Post a trade
+> ```postTrade((listing_id, receiver_id, expiration_date [, start_date])```
+> Start date is optional, if not provided current time will be used
+> Returns trade_id
+
 
 ## Production
 

@@ -35,6 +35,29 @@ const getTradeById = (trade_id) => {
 
 //post a review
 
+// Post a trade
+export const postTrade = async (listing_id, receiver_id, expiration_date, start_date = new Date()) => {
+  try {
+    const listing = await getListingById(listing_id)
+    if (!listing) {
+      throw new Error('Could not find listing with id: ', listing_id)
+    } else {
+      const data = {
+        listing_id,
+        owner_id: listing.user_id,
+        expiration_date,
+        start_date,
+        status: true
+      }
+      let docRef = await addDoc(collection(db, 'trades'), data)
+      return docRef.id
+    }
+
+  } catch (err) {
+    console.log('Error creating trade: ', err.code, err.message)
+  }
+}
+
 //post a trade
 const postTrade = async (listing_id, receiver_id, start_date, expiration_date) => {
   try {
