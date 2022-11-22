@@ -154,8 +154,28 @@ export const getTradeById = async (trade_id) => {
 }
 
 //post a review
-export const postReview = (trade_id, rating, ) => {
+export const postReview = async (trade_id, poster_id, rating, description) => {
+  try {
+    const trade = await getTradeById(trade_id)
+    console.log('trade',trade)
+    if (!trade) {
+      throw new Error('Could not find trade with id, ', trade_id)
+    } else if (poster_id !== trade.owner_id && poster_id !== trade.receiver_id) {
+      throw new Error('Reviews must be from a party of the trade')
+    } else {
+      const data = {
+        trade_id,
+        poster_id,
+        rating,
+        description
+      }
+      let docRef = await addDoc(collection(db, 'reviews'), data)
+      return docRef.id
+    }
 
+  } catch (err) {
+    console.log('Error creating review: ', err.message)
+  }
 }
 
 // Post a trade
