@@ -5,7 +5,8 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  signInWithPopup
+  signInWithPopup,
+  sendPasswordResetEmail
 } from 'firebase/auth'
 
 import { doc,collection, setDoc, getDoc} from "firebase/firestore";
@@ -60,13 +61,13 @@ export function AuthProvider({ children }) {
   }
 
 
-  // function updateEmail(email) {
-  //   return user.updateEmail(email);
-  // }
+  function updateEmail(email) {
+    return updateEmail(user,email);
+  }
 
-  // function updatePassword(password) {
-  //   return user.updatePassword(password);
-  // }
+  function updatePassword(password) {
+    return updatePassword(user,password);
+  }
 
   const value = {
     user,
@@ -76,9 +77,9 @@ export function AuthProvider({ children }) {
     signOutUser,
     resetPassword,
     addData,
-    findData
-    // updateEmail,
-    // updatePassword,
+    findData,
+    updateEmail,
+    updatePassword,
   };
 
   return (

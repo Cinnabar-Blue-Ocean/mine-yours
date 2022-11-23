@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../firebase/authMethods.js";
-import { Paper,Box,Button,TextField,Tab,Tabs} from '@mui/material';
+import { Paper,Box,Button,TextField,Tab,Tabs,Link} from '@mui/material';
 import {TabPanel} from '@mui/lab';
 import TabContext from '@mui/lab/TabContext';
 import SignOut from './SignOut.jsx';
@@ -76,26 +76,27 @@ function SignInTab() {
     }
   }
 
-  // const handlePassword = async () => {
-  //   setMessage(null);
-  //   setError(null);
+  const handlePassword = async () => {
+    console.log('hello')
+    console.log(loginEmail)
+    setMessage(null);
+    setError(null);
 
-  //   const { email } = values;
+    if (!loginEmail) {
+      return setError("Please enter an email first");
+    }
 
-  //   if (!email) {
-  //     return setError("Please enter an email first");
-  //   }
+    try {
+      console.log('are we here')
+      setLoading(true);
+      await resetPassword(loginEmail);
+      setMessage("Successfully sent email reset link");
+    } catch (error) {
+      setError(error.message);
+    }
 
-  //   try {
-  //     setLoading(true);
-  //     await resetPassword(email);
-  //     setMessage("Successfully sent email reset link");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-
-  //   setLoading(false);
-  // };
+    setLoading(false);
+  };
 
   return (
 
@@ -140,6 +141,9 @@ function SignInTab() {
         width = '25ch'
         required
       />
+        {message && <p>{message}</p>}
+        {error && <p >{error}</p>}
+      <div onClick={handlePassword}>Forgot password?</div>
       <Button
         sx={{
           m: 1,
