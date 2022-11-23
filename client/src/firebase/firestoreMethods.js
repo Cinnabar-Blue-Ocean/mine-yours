@@ -4,8 +4,11 @@ import {
   setDoc,
   doc,
   getDoc,
+  getDocs,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  query,
+  where
 } from "firebase/firestore";
 import { auth, db } from './index.js';
 
@@ -13,7 +16,7 @@ import { auth, db } from './index.js';
 //Define queries
 
 //get listing by a specific filter
-export const getListing = async (filters) => {
+export const getListings = async (filters) => {
   let parameters = Object.entries(filters);
   let key = parameters[0][0];
   let value = parameters[0][1];
@@ -33,7 +36,7 @@ export const getListing = async (filters) => {
 };
 
 //get a user by a specific filter
-export const getUser = async (filters) => {
+export const getUsers = async (filters) => {
   let parameters = Object.entries(filters);
   let key = parameters[0][0];
   let value = parameters[0][1];
