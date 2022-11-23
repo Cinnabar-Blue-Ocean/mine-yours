@@ -42,9 +42,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const {setListings} = props
+  const [open , setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -91,7 +92,7 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <Box>
           <Typography sx={{textAlign: 'center', pt: "10px"}}>Type</Typography>
-          <ColorToggleButton sx={{m: 'auto !important'}}/>
+          <ColorToggleButton sx={{m: 'auto !important'}} setListings={setListings}/>
         </Box>
         <Divider />
         <Box>
