@@ -1,8 +1,10 @@
 import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { getListing } from '../../firebase/retrieveData.js'
 
-export default function ColorToggleButton() {
+export default function ColorToggleButton(props) {
+  const {setListings} = props
   const [alignment, setAlignment] = React.useState('web');
 
   const handleChange = (event, newAlignment) => {
@@ -16,16 +18,23 @@ export default function ColorToggleButton() {
       exclusive
       onChange={handleChange}
       aria-label="Platform"
-      sx={{ml: '5px', pb: '10px'}}
+      sx={{ ml: '5px', pb: '10px' }}
     >
-      <ToggleButton value="temp" onClick={(e) => {
-        console.log(e.target.value)
+      <ToggleButton value="temporary" onClick={(e) => {
+        getListing({ type: e.target.value })
+          .then((data) => {
+            setListings(data)
+          })
       }}>Temporary</ToggleButton>
-      <ToggleButton value="perm"
-      onClick={(e) => {
-        // Get value of which button was clicked to query db
-        console.log(e.target.value)
-      }}>Permanent</ToggleButton>
+      <ToggleButton value="permanent"
+        onClick={(e) => {
+          // Get value of which button was clicked to query db
+          getListing({ type: e.target.value })
+            .then((data) => {
+              setListings(data)
+            })
+
+        }}>Permanent</ToggleButton>
     </ToggleButtonGroup>
   );
 }
