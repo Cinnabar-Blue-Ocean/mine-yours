@@ -8,6 +8,7 @@ import SignIn from '../pages/SignIn.jsx'
 import SignUp from '../pages/SignUp.jsx'
 import Profile from '../pages/Profile.jsx'
 import CollectUserInfo from '../pages/CollectUserInfo.jsx'
+
 import {
   getUsers,
   getListings,
@@ -15,6 +16,7 @@ import {
   getReviews,
   getTrades
 } from '../firebase/firestoreMethods';
+
 import Loader from '../pages/Loading.jsx'
 import { AnimatePresence } from "framer-motion";
 
