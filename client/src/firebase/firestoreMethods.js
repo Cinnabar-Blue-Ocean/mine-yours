@@ -220,6 +220,7 @@ export const updateUser = async (user_id, data) => {
 }
 //update a review
 
+
 //update a listing
 export const updateListing = async (listing_id, data) => {
   const docRef = await doc(db, 'listings', listing_id)
@@ -232,6 +233,6 @@ export const deleteListing = async (listing_id) => {
 }
 
 //delete a review
-
-
-
+export const deleteReview = async (review_id) => {
+  return await deleteDoc(doc(db, 'reviews', review_id));
+}
