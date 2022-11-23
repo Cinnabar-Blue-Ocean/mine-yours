@@ -9,6 +9,9 @@ function CollectUserInfo() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [username, setUsername] = useState('');
+  const [profileImage, setProfileImage] = useState(null);
+
   const navigate = useNavigate();
 
   const handleSubmit = async()=> {
@@ -17,7 +20,10 @@ function CollectUserInfo() {
       email:user?.email,
       first_name:firstName,
       last_name:lastName,
-      zip_code:zipCode
+      username:userName,
+      zip_code:zipCode,
+      rating:null,
+      profileImage:profileImage
     }
     console.log('userRef',userRef)
     await addData(userRef)
